@@ -163,7 +163,6 @@ class MainWindow(QWidget):
         if image_path:
             # Передать выбранное изображение в функцию capture_and_save_face
             self.run_capture(image_path)
-            self.load_image_button.setDisabled(True)
 
     def import_module(self, module_name):
         spec = importlib.util.spec_from_file_location(module_name, f"src/{module_name}.py")
@@ -194,6 +193,7 @@ class MainWindow(QWidget):
 
         # Блокируем кнопку "Сделать снимок"
         self.capture_button.setDisabled(True)
+        self.load_image_button.setDisabled(True)
 
         # Разблокируем поля ввода
         self.first_name_input.setDisabled(False)

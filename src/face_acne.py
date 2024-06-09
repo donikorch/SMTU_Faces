@@ -106,7 +106,7 @@ while True:
         color = (0, 255, 0) if name != "Unknown" else (0, 0, 255)
         cv2.rectangle(img, (left, top), (right, bottom), color, 2)
         cv2.rectangle(img, (left, bottom - 35), (right, bottom), color, cv2.FILLED)
-        cv2.putText(img, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
+        cv2.putText(img, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 3)
 
         # Получение и обработка лица моделью для классификации болезни
         face_image = Image.fromarray(img[top:bottom, left:right])
@@ -127,7 +127,7 @@ while True:
         for i, prob in enumerate(probabilities):
             class_name = class_names[i]
             text = f"{class_name}: {prob.item():.2f}"
-            cv2.putText(img, text, (text_x, text_y), font, 0.5, (255, 255, 255), 1)
+            cv2.putText(img, text, (text_x, text_y), font, 0.5, (255, 255, 255), 2)
             text_y += 20
 
         # Отображение изображения

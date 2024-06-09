@@ -4,7 +4,7 @@ import cv2
 import time
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from db.models import Embedding, Person
+from db.models import Embedding
 
 # Создаем подключение к базе данных
 engine = create_engine('postgresql://postgres:postgres@localhost/faces')
@@ -90,7 +90,7 @@ while True:
         color = (0, 255, 0) if name != "Unknown" else (0, 0, 255)
         cv2.rectangle(img, (left, top), (right, bottom), color, 2)
         cv2.rectangle(img, (left, bottom - 35), (right, bottom), color, cv2.FILLED)
-        cv2.putText(img, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
+        cv2.putText(img, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 3)
 
     # Отображение количества кадров в секунду
     fps = cap.get(cv2.CAP_PROP_FPS)
